@@ -24,16 +24,14 @@ There are 3 queues in this app: Default, email_jobs, image_jobs.
 We are only really using email_jobs and image_jobs, so we will attach workers on these queues.
 
     QUEUE="image_jobs" rake jobs:work
-
-In another terminal inside this app's directory
-
     QUEUE="email_jobs" rake jobs:work
 
 All of this is encoded in our Procfile. You are using Procfile, right?
+Now, to start these workers and our web process, execute `foreman start` in the root directory of the app.
 
 ### Creating Jobs
 
-    rails s
+    foremant start (If you have not already done so.)
 
     Visit /users/new
     Click "create"
