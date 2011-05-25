@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110519201429) do
   add_index "queue_classic_jobs", ["id"], :name => "index_queue_classic_jobs_on_id"
 
   create_table "users", :force => true do |t|
+    t.datetime "welcome_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

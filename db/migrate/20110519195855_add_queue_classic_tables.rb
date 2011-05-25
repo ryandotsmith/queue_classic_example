@@ -25,7 +25,6 @@ class AddQueueClassicTables < ActiveRecord::Migration
       t.timestamp :locked_at
     end
     add_index :image_jobs, :id
-
   end
 
   def self.down
