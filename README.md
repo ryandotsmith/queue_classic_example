@@ -7,7 +7,8 @@ users multiple queues with distinct workers. Some files to note:
 2. db/migrate/20110519195855_add_queue_classic_tables.rb
 3. app/models/user.rb
 4. app/helpers/users_helper.rb
-5. Procfile
+5. app/clock.rb
+6. Procfile
 
 ### Install
 
@@ -36,3 +37,13 @@ Now, to start these workers and our web process, execute `foreman start` in the 
     Visit /users/new
     Click "create"
     Watch output on the worker terminal windows
+
+### Scheduled Jobs
+
+  In app/clock.rb we setup a schedule for sending out welcome emails every day.
+  Queue Classic encourages you to handle your scheduling of work via a gem that
+  specializes in scheduling; **clockwork.** In our clock file, we schedule a
+  method call for each day. This method call will find all of the users who have
+  not received a welcome email and send each of those users a welcome email.
+
+
