@@ -67,7 +67,7 @@ GEM
       activesupport (= 3.0.7)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
-    rake (0.8.7)
+    rake (0.9.2)
     term-ansicolor (1.0.5)
     thor (0.14.6)
     treetop (1.4.9)
@@ -83,3 +83,4 @@ DEPENDENCIES
   pg
   queue_classic
   rails (= 3.0.7)
+  rake (= 0.9.2)
