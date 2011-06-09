@@ -9,6 +9,7 @@ users multiple queues with distinct workers. Some files to note:
 4. app/helpers/users_helper.rb
 5. app/clock.rb
 6. Procfile
+7. Rakefile
 
 ### Install
 
