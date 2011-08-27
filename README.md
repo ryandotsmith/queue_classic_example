@@ -33,7 +33,7 @@ Now, to start these workers and our web process, execute `foreman start` in the 
 
 ### Creating Jobs
 
-    foremant start (If you have not already done so.)
+    foreman start (If you have not already done so.)
 
     Visit /users/new
     Click "create"
