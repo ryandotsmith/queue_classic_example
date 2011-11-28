@@ -1,7 +1,7 @@
 ## Queue Classic Example
 
 This simple Rails app shows off the features of QueueClassic. Specifically, an application that
-users multiple queues with distinct workers. Some files to note:
+uses multiple queues with distinct workers. Some files to note:
 
 1. config/initializers/queue_classic.rb
 2. db/migrate/20110519195855_add_queue_classic_tables.rb
