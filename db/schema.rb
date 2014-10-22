@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -8,35 +9,28 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110519201429) do
+ActiveRecord::Schema.define(version: 20141022110912) do
 
-  create_table "email_jobs", :force => true do |t|
-    t.text     "details"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "queue_classic_jobs", force: true do |t|
+    t.text     "q_name",                       null: false
+    t.text     "method",                       null: false
+    t.json     "args",                         null: false
     t.datetime "locked_at"
+    t.integer  "locked_by"
+    t.datetime "created_at", default: "now()"
   end
 
-  add_index "email_jobs", ["id"], :name => "index_email_jobs_on_id"
+  add_index "queue_classic_jobs", ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
 
-  create_table "image_jobs", :force => true do |t|
-    t.text     "details"
-    t.datetime "locked_at"
-  end
-
-  add_index "image_jobs", ["id"], :name => "index_image_jobs_on_id"
-
-  create_table "queue_classic_jobs", :force => true do |t|
-    t.text     "details"
-    t.datetime "locked_at"
-  end
-
-  add_index "queue_classic_jobs", ["id"], :name => "index_queue_classic_jobs_on_id"
-
-  create_table "users", :force => true do |t|
-    t.datetime "welcome_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
