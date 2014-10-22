@@ -25,8 +25,8 @@ There are 3 queues in this app: Default, email_jobs, image_jobs.
 
 We are only really using email_jobs and image_jobs, so we will attach workers on these queues.
 
-    QUEUE="image_jobs" rake jobs:work
-    QUEUE="email_jobs" rake jobs:work
+    bundle exec rake qc:work QUEUE="image_jobs"
+    bundle exec rake qc:work QUEUE="email_jobs"
 
 All of this is encoded in our Procfile. You are using Procfile, right?
 Now, to start these workers and our web process, execute `foreman start` in the root directory of the app.

@@ -1,4 +1,11 @@
-require File.expand_path('../../config/boot', __FILE__)
-require File.expand_path('../../config/environment', __FILE__)
+require 'clockwork'
+require './config/boot'
+require './config/environment'
 
-every(1.day,"user.followup") { $email_jobs.enqueue("UsersHelper.send_signup_followup") }
+
+module Clockwork
+  handler do |job|
+    puts "Running #{job}"
+  end
+	every(10.seconds,"user.followup") { $email_jobs.enqueue("UsersHelper.send_signup_followup") }
+end

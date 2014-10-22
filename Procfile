@@ -1,4 +1,4 @@
 web: rails s
-imageworker: QUEUE="image_jobs" rake jobs:work
-emailworker: QUEUE="email_jobs" rake jobs:work
+imageworker: bundle exec rake qc:work QUEUE="image_jobs"
+emailworker: bundle exec rake qc:work QUEUE="email_jobs"
 clock: bundle exec clockwork app/clock.rb

@@ -2,7 +2,7 @@ module UsersHelper
 
   def self.send_signup_followup
     cond = "welcome_sent_at IS NULL"
-    User.find_in_batches(:conditions => cond) do |users|
+    User.where(cond).find_in_batches do |users|
       users.each {|u| QC.enqueue("UsersHelper.send_welcome_email", u.id) }
     end
   end
@@ -22,5 +22,4 @@ module UsersHelper
     user = User.find(user_id)
     puts "making avatar for #{user.id}"
   end
-
 end
